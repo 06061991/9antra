@@ -1,0 +1,10 @@
+version: '3'
+services:
+  frontend:
+    image: ghcr.io/9antra-tn/9antraformationfront:1.0.13
+    platform: linux/arm64/v8
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8089:80
+#  docker-compose -f ./deployment/docker-compose.yaml up

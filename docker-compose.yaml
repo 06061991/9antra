@@ -1,0 +1,10 @@
+
+services:
+  frontend:
+    container_name: 9antra-app
+    build: .
+
+    ports:
+      - "8082:80"
+
+#  docker-compose -f ./deployment/docker-compose.yaml up
