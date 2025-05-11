@@ -12,7 +12,7 @@ pipeline {
 
         stage("Checkout") {
             steps {
-                git url: 'https://github.com/06061991/9antra.git'
+                git branch: 'main', url: 'https://github.com/06061991/9antra.git'
             }
         }
 
