@@ -17,7 +17,7 @@ RUN npm ci ${NPM_LOG_LEVEL} || npm install ${NPM_FORCE_INSTALL} ${NPM_LOG_LEVEL}
 FROM nginx:alpine
 
 # Copier le build dans le dossier Nginx
-COPY --from=build /code/9antraFormationFront/dist/*/ /usr/share/nginx/html
+COPY --from=build /code/9antraFormationFront/dist/. /usr/share/nginx/html
 
 # Ajouter la config personnalisée Nginx
 COPY --from=build /code/9antraFormationFront/nginx.conf /etc/nginx/conf.d/kantra-formation.conf
