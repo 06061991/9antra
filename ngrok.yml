@@ -1,0 +1,10 @@
+version: 2
+tunnels:
+  sonar:
+    addr: http://sonar:9000
+    proto: http
+    schemes:
+      - https
+      - http
+    domain: fancy-lamb-related.ngrok-free.app
+

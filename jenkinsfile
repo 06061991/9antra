@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('docker1')
+    }
+    stages {
+        stage("Clean Up") {
+            steps {
+                deleteDir()
+            }
+        }
+
+        stage("Checkout") {
+            steps {
+                git branch: 'main', url: 'https://github.com/06061991/9antra.git'
+            }
+        }
+
+        stage("Login to DockerHub") {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+            }
+        }
+
+        stage("Generate Docker Image") {
+            steps {
+                sh "docker build -t asslam1991/9antra-app:1.1.${env.BUILD_NUMBER} ."
+            }
+        }
+
+        stage("Push Docker Image") {
+            steps {
+                sh "docker push asslam1991/9antra-app:1.1.${env.BUILD_NUMBER}"
+                sh "docker image rm asslam1991/9antra-app:1.1.${env.BUILD_NUMBER}"
+            }
+        }
+
+        stage("OWASP SCAN") {
+            steps {
+                dependencyCheck additionalArguments: '', odcInstallation: 'DP-CHECK'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+    }
+}
