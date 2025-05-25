@@ -34,7 +34,7 @@ jobs:
             asslam1991/9antra:1.0.${{ github.run_number }}
             asslam1991/9antra:latest
       - name: checkout argocd repo
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
         with:
           repository: 06061991/argocd
           tocken: ${{ secrets.GHCR_TOKEN2 }}
