@@ -49,6 +49,6 @@ jobs:
           cd argocd
           git config user.name "github-actionss"
           git config user.email "github-actions@github.com"
-          git add kantra-app/kantra-deployment.yaml
+          git add argocd/kantra-app/kantra-deployment.yaml
           git commit -m "Update 9antra image tag to 1.1.${{ github.run_number }}"
           git push
