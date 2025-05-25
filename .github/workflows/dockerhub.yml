@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 06061991/argocd
-          tocken: ${{ secrets.GHCR_TOKEN2 }}
+          token: ${{ secrets.GHCR_TOKEN2 }}
           path: argocd
           ref: main
       - name: Update image tag in kantra-deployment.yaml
