@@ -33,8 +33,7 @@ jobs:
           tags: |
             asslam1991/9antra:1.0.${{ github.run_number }}
             asslam1991/9antra:latest
-<<<<<<< HEAD
-=======
+
       - name: checkout argocd repo
         uses: actions/checkout@v4
         with:
@@ -54,4 +53,3 @@ jobs:
           git add argocd/kantra-app/kantra-deployment.yaml
           git commit -m "Update 9antra image tag to 1.1.${{ github.run_number }}"
           git push
->>>>>>> 94a4b767a2608f48402ca5b5d2e369750a61ec53
