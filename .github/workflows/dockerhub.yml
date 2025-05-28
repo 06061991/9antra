@@ -33,3 +33,25 @@ jobs:
           tags: |
             asslam1991/9antra:1.0.${{ github.run_number }}
             asslam1991/9antra:latest
+<<<<<<< HEAD
+=======
+      - name: checkout argocd repo
+        uses: actions/checkout@v4
+        with:
+          repository: 06061991/argocd
+          token: ${{ secrets.GHCR_TOKEN2 }}
+          path: argocd
+          ref: main
+      - name: Update image tag in kantra-deployment.yaml
+        run: |
+          sed -i 's|image: 06061991/9antra:.*|image: 06061991/9antra:1.1.${{ github.run_number }}|' argocd/argocd/kantra-app/kantra-deployment.yaml
+
+      - name: Commit and push changes to argocd
+        run: |
+          cd argocd
+          git config user.name "github-actionss"
+          git config user.email "github-actions@github.com"
+          git add argocd/kantra-app/kantra-deployment.yaml
+          git commit -m "Update 9antra image tag to 1.1.${{ github.run_number }}"
+          git push
+>>>>>>> 94a4b767a2608f48402ca5b5d2e369750a61ec53
