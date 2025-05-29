@@ -6,5 +6,6 @@ tunnels:
     schemes:
       - https
       - http
-    domain: fancy-lamb-related.ngrok-free.app
+    domain: legally-living-flea.ngrok-free.app
+
 
