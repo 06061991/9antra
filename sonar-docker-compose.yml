@@ -28,7 +28,7 @@ services:
   ngrok:
     image: ngrok/ngrok:latest
     environment:
-      - NGROK_AUTHTOKEN=2wS3MB43gmvattFsQ95KaEsTNax_2ip66Kfu5EHeqCYWKL3ry
+      - NGROK_AUTHTOKEN=2xiqfjEsYtVFLiCFocc5C9Swm7u_3CAWn5WhS2SpJdAcufKmv
     command:
       - "start"
       - "--all"
