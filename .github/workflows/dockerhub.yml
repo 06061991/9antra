@@ -33,3 +33,25 @@ jobs:
           tags: |
             asslam1991/9antra:1.0.${{ github.run_number }}
             asslam1991/9antra:latest
+      - name: Checkout argotest repo
+        uses: actions/checkout@v4
+        with:
+          repository: 06061991/argocd
+          token: ${{ secrets.GHCR_TOKEN }} # Crée un token PAT avec accès en écriture
+          path: argocd
+          ref: main
+
+      - name: Update image tag in values.yaml
+        run: |
+          sed -i 's|tagfront: .*|tagfront: "1.0.${{ github.run_number }}"|' argocd/kantra-app/values.yaml
+
+
+      - name: Commit and push changes to argocd
+        run: |
+          cd argocd
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add kantra-app/values.yaml
+          git commit -m "Update frontend image tag to 1.0.${{ github.run_number }}"
+          git push
+
