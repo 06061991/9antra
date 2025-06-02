@@ -29,11 +29,8 @@ services:
     image: ngrok/ngrok:latest
     environment:
       - NGROK_AUTHTOKEN=2xiqfjEsYtVFLiCFocc5C9Swm7u_3CAWn5WhS2SpJdAcufKmv
-    command:
-      - "start"
-      - "--all"
-      - "--config"
-      - "/etc/ngrok.yml"
+    command: start --all --config /etc/ngrok.yml
+
     ports:
       - 4040:4040
     volumes:
